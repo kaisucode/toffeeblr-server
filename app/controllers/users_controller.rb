@@ -47,13 +47,13 @@ class UsersController < ApplicationController
   # end
 
   def find_user
-    @user = User.find_by_username(params[:_username])
+    @user = User.find_by_username(params[:username])
   rescue ActiveRecord::RecordNotFound
-    render json: { errors: 'User not found' }
+    render json: { errors: 'User not found' }, status: :not_found
   end
 
   # Only allow a trusted parameter "white list" through.
   def user_params
-    params.fetch(:username, :password)
+    params.permit(:username, :password)
   end
 end
