@@ -27,9 +27,17 @@ class UserTest < ActiveSupport::TestCase
     assert_not User.new(username: "a" * 21, password: "123456").valid?
   end
 
-  test "passwords should be at least six characters long" do
-    assert_not User.new(username: "hello", password: "123").valid?
-    assert_not User.new(username: "hello", password: "12345").valid?
+  test "passwords should be at least three characters long" do
+    assert_not User.new(username: "hello", password: "12").valid?
+    assert User.new(username: "hello", password: "12345").valid?
     assert User.new(username: "hello", password: "123456").valid?
+  end
+
+  test "associated posts should be destroyed" do
+    @user.save
+    @user.posts.create(title: "hi", content: "hello")
+    assert_difference 'Post.count', -1 do
+      @user.destroy
+    end
   end
 end

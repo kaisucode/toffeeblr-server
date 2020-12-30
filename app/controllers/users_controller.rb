@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-  before_action :authorize_request, except: [:create, :show, :index]
-  before_action :find_user, except: %i[create index show]
+  before_action :authorize_request, only: [:update, :destroy, :feed]
+  # before_action :find_user, except: %i[create index show]
+  # [:index :show :create :update :destroy]
 
   # GET /users
   def index
@@ -11,7 +12,10 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    render json: @user, status: :ok
+    # render json: @user, status: :ok
+    render json: {user: @user, posts: @user.posts}, status: :ok
+
+    # if self, return user.posts.count and other private data
   end
 
   # POST /users
@@ -41,6 +45,11 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
+  def feed
+    @posts = Post.where("user_id = ?", @current_user.id)
+    render json: @posts, status: :ok
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -48,11 +57,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def find_user
-    @user = User.find_by_username(params[:username])
-  rescue ActiveRecord::RecordNotFound
-    render json: { errors: 'User not found' }, status: :not_found
-  end
+  # def find_user
+  #   @user = User.find_by(username: params[:username])
+  # rescue ActiveRecord::RecordNotFound
+  #   render json: { errors: 'User not found' }, status: :not_found
+  # end
 
   # Only allow a trusted parameter "white list" through.
   def user_params

@@ -7,24 +7,32 @@ Built with Ruby on Rails & MySQL
 ## TODO
 - [x] Users and authentication with JWT
 - [x] Model and controller tests
-- [ ] Use proper error codes
-- [ ] [Route to username instead of ID for users](https://stackoverflow.com/a/7735324)
-- [ ] Posts resource
+- [x] Use proper error codes
+- [x] Posts resource
 - [ ] Following/follower relationship
 - [ ] Update token when username is updated
 - [ ] Add user bio and avatar
+- [ ] Pagination
+- [ ] [Route to username instead of ID for users](https://stackoverflow.com/a/7735324)
 
 
 ## Resources & REST API table
 | URL/ENDPOINT     | VERB   | DESCRIPTION                         |
 |------------------|--------|-------------------------------------|
 | /auth/login      | POST   | Logs in user and returns token      |
+| /feed/           | GET    | Displays feed                       |
+| /users/          | GET    | Displays all users                  |
 | /users/          | POST   | Creates user { username, password } |
 | /users/{user_id} | GET    | Returns info                        |
 | /users/{user_id} | PUT    | Updates user info { content }       |
 | /users/{user_id} | DELETE | Destroys user                       |
 
-## Error Codes
+| /posts/          | POST   | Creates post { title, content }      |
+| /posts/{post_id} | PUT    | Updates post info { title, content } |
+| /posts/{post_id} | DELETE | Destroys post                        |
+
+
+## Error Codes In Use
 - 200 success
 - 201 created
 - 401 auth error
@@ -51,8 +59,8 @@ Built with Ruby on Rails & MySQL
 - created_at :datetime
 - updated_at :datetime
 
-### Posts
+### Posts (belongs to user)
 - title :string
 - content :text
-- user_id :integer
+- user :references
 

@@ -3,4 +3,5 @@ class User < ApplicationRecord
   validates :username, presence: true, length: { maximum: 20 }, uniqueness: true
   validates :password, presence: true, length: { maximum: 20, minimum: 3 }
   has_secure_password
+  has_many :posts, dependent: :destroy
 end
