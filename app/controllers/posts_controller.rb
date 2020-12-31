@@ -4,7 +4,8 @@ class PostsController < ApplicationController
 
   def explore
     @posts = Post.all
-    render json: {"posts": @posts}, status: :ok
+    render 'posts/display.jbuilder'
+    # render json: {"posts": @posts}, status: :ok
   end
 
   def create

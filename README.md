@@ -1,4 +1,4 @@
-p808
+
 # About 
 Toffeeblr!!
 
@@ -9,7 +9,7 @@ Built with Ruby on Rails & MySQL
 - [x] Model and controller tests
 - [x] Use proper error codes
 - [x] Posts resource
-- [ ] Save username in posts? or at least return usernames in the api
+- [x] Save username in posts? or at least return usernames in the api (edit: used jbuilder)
 - [ ] Image posts
 - [ ] Following/follower relationship
 - [ ] Add user bio and avatar
