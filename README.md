@@ -1,4 +1,4 @@
-
+p808
 # About 
 Toffeeblr!!
 
@@ -9,8 +9,9 @@ Built with Ruby on Rails & MySQL
 - [x] Model and controller tests
 - [x] Use proper error codes
 - [x] Posts resource
+- [ ] Save username in posts? or at least return usernames in the api
+- [ ] Image posts
 - [ ] Following/follower relationship
-- [ ] Update token when username is updated
 - [ ] Add user bio and avatar
 - [ ] Pagination
 - [ ] [Route to username instead of ID for users](https://stackoverflow.com/a/7735324)
@@ -21,6 +22,8 @@ Built with Ruby on Rails & MySQL
 |------------------|--------|-------------------------------------|
 | /auth/login      | POST   | Logs in user and returns token      |
 | /feed/           | GET    | Displays feed                       |
+| /explore/        | GET    | Displays all posts                  |
+
 | /users/          | GET    | Displays all users                  |
 | /users/          | POST   | Creates user { username, password } |
 | /users/{user_id} | GET    | Returns info                        |

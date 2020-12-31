@@ -47,7 +47,7 @@ class UsersController < ApplicationController
 
   def feed
     @posts = Post.where("user_id = ?", @current_user.id)
-    render json: @posts, status: :ok
+    render json: {"posts": @posts}, status: :ok
   end
 
   private

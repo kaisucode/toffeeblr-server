@@ -2,6 +2,11 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:update, :destroy]
   before_action :authorize_request, only: [:create, :update, :destroy]
 
+  def explore
+    @posts = Post.all
+    render json: {"posts": @posts}, status: :ok
+  end
+
   def create
     @post = @current_user.posts.build(post_params)
     if @post.save

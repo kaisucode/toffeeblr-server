@@ -12,8 +12,14 @@ class ApplicationController < ActionController::API
     rescue ActiveRecord::RecordNotFound => e
       render json: { error: e.message }, status: :unauthorized
     rescue JWT::DecodeError => e
-      print("jwt messed up")
-      render json: { error: e.message }, status: :unauthorized
+      if not header
+        puts("No header provided")
+        render json: { error: e.message }, status: :unprocessable_entity
+      else
+        print("jwt messed up, header: ")
+        puts(header)
+        render json: { error: e.message }, status: :internal_server_error
+      end
     end
   end
 end
