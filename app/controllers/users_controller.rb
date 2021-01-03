@@ -13,8 +13,9 @@ class UsersController < ApplicationController
   # GET /users/1
   def show
     # render json: @user, status: :ok
-    render json: {user: @user, posts: @user.posts}, status: :ok
+    # render json: {user: @user, posts: @user.posts}, status: :ok
 
+    render 'users/show.jbuilder'
     # if self, return user.posts.count and other private data
   end
 
