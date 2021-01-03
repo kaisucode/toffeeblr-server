@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users
   resources :posts
   resources :usernames
+  resources :relationships
  
   get '/feed', to: 'users#feed'
   get '/explore', to: 'posts#explore'

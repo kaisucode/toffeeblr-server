@@ -47,9 +47,10 @@ class UsersController < ApplicationController
   end
 
   def feed
-    @posts = Post.where("user_id = ?", @current_user.id)
+    # @posts = Post.where("user_id = ?", @current_user.id)
+    @posts = Post.where(user: @current_user.following)
+    @posts = @posts.order(created_at: :desc)
     render 'posts/display.jbuilder'
-    # render json: {"posts": @posts}, status: :ok
   end
 
   private

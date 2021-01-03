@@ -11,30 +11,36 @@ Built with Ruby on Rails & MySQL
 - [x] Posts resource
 - [x] Save username in posts? or at least return usernames in the api (edit: used jbuilder)
 - [x] [Route to username instead of ID for users](https://stackoverflow.com/a/7735324)
-- [ ] Following/follower relationship
+- [x] Following/follower relationship
 - [ ] Post likes
 - [ ] Add user bio and avatar
 - [ ] Image posts
 - [ ] Pagination
+- [ ] Safe-guard more rendered data with jbuilder
+- [ ] Tags
+- [ ] Comments / Reblogs
 
 
 ## Resources & REST API table
-| URL/ENDPOINT     | VERB   | DESCRIPTION                         |
-|------------------|--------|-------------------------------------|
-| /auth/login           | POST   | Logs in user and returns token      |
-| /feed/                | GET    | Displays feed                       |
-| /explore/             | GET    | Displays all posts                  |
-| /usernames/{username} | GET    | Returns info                        |
+| URL/ENDPOINT              | VERB   | DESCRIPTION                          |
+|---------------------------|--------|--------------------------------------|
+| /auth/login               | POST   | Logs in user and returns token       |
+| /feed/                    | GET    | Displays feed                        |
+| /explore/                 | GET    | Displays all posts                   |
+| /usernames/{username}     | GET    | Returns info                         |
 
-| /users/          | GET    | Displays all users                  |
-| /users/          | POST   | Creates user { username, password } |
-| /users/{user_id} | GET    | Returns info                        |
-| /users/{user_id} | PUT    | Updates user info { content }       |
-| /users/{user_id} | DELETE | Destroys user                       |
+| /users/                   | GET    | Displays all users                   |
+| /users/                   | POST   | Creates user { username, password }  |
+| /users/{user_id}          | GET    | Returns info                         |
+| /users/{user_id}          | PUT    | Updates user info { content }        |
+| /users/{user_id}          | DELETE | Destroys user                        |
 
-| /posts/          | POST   | Creates post { title, content }      |
-| /posts/{post_id} | PUT    | Updates post info { title, content } |
-| /posts/{post_id} | DELETE | Destroys post                        |
+| /relationships/           | POST   | Follows user { username }            |
+| /relationships/{username} | DELETE | Unfollows user                       |
+
+| /posts/                   | POST   | Creates post { title, content }      |
+| /posts/{post_id}          | PUT    | Updates post info { title, content } |
+| /posts/{post_id}          | DELETE | Destroys post                        |
 
 
 ## Error Codes In Use
