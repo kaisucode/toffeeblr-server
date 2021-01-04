@@ -12,11 +12,14 @@ Built with Ruby on Rails & MySQL
 - [x] Save username in posts? or at least return usernames in the api (edit: used jbuilder)
 - [x] [Route to username instead of ID for users](https://stackoverflow.com/a/7735324)
 - [x] Following/follower relationship
+- [x] Improve the `Explore` endpoint
+- [x] Currently follower/following timestamp is not working correctly; use `active_relationships` and `passive_relationships` attributes instead and make a new endpoint
 - [ ] Post likes
 - [ ] Add user bio and avatar
 - [ ] Image posts
 - [ ] Pagination
 - [ ] Safe-guard more rendered data with jbuilder
+- [ ] Clean up routes and specify methods
 - [ ] Tags
 - [ ] Comments / Reblogs
 
@@ -25,6 +28,7 @@ Built with Ruby on Rails & MySQL
 | URL/ENDPOINT              | VERB   | DESCRIPTION                          |
 |---------------------------|--------|--------------------------------------|
 | /auth/login               | POST   | Logs in user and returns token       |
+| /auth/self                | GET    | Returns username and relationship #'s |
 | /feed/                    | GET    | Displays feed                        |
 | /explore/                 | GET    | Displays all posts                   |
 | /usernames/{username}     | GET    | Returns info                         |
@@ -35,6 +39,7 @@ Built with Ruby on Rails & MySQL
 | /users/{user_id}          | PUT    | Updates user info { content }        |
 | /users/{user_id}          | DELETE | Destroys user                        |
 
+| /relationships/           | GET    | Gets user relationships              |
 | /relationships/           | POST   | Follows user { username }            |
 | /relationships/{username} | DELETE | Unfollows user                       |
 

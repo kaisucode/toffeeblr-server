@@ -1,11 +1,14 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:update, :destroy]
-  before_action :authorize_request, only: [:create, :update, :destroy]
+  before_action :authorize_request, only: [:create, :update, :destroy, :explore]
 
   def explore
-    @posts = Post.all
-    render 'posts/display.jbuilder'
+    # @posts = Post.all
     # render json: {"posts": @posts}, status: :ok
+
+    @posts = Post.where.not(user: @current_user.following)
+    @posts = @posts.where.not(user: @current_user)
+    render 'posts/display.jbuilder'
   end
 
   def create

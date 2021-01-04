@@ -1,5 +1,5 @@
 class UsernamesController < ApplicationController
-  before_action :set_user
+  before_action :set_user, only: :show
 
   def show
     render 'users/show.jbuilder'
