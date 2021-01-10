@@ -6,8 +6,12 @@ class PostsController < ApplicationController
     # @posts = Post.all
     # render json: {"posts": @posts}, status: :ok
 
-    @posts = Post.where.not(user: @current_user.following)
-    @posts = @posts.where.not(user: @current_user)
+    # @posts = Post.where.not(user: @current_user.following)
+    # @posts = @posts.where.not(user: @current_user)
+
+    @posts = Post.where.not("user_id IN (:following_ids) OR user_id = :user_id", 
+                            following_ids: @current_user.following_ids, 
+                            user_id: @current_user.id)
     render 'posts/display.jbuilder'
   end
 
