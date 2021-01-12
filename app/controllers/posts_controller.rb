@@ -1,17 +1,18 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:update, :destroy]
+  before_action :soft_authorization_request, only: [:someposts]
   before_action :authorize_request, only: [:create, :update, :destroy, :explore]
 
   def explore
-    # @posts = Post.all
-    # render json: {"posts": @posts}, status: :ok
-
-    # @posts = Post.where.not(user: @current_user.following)
-    # @posts = @posts.where.not(user: @current_user)
-
     @posts = Post.where.not("user_id IN (:following_ids) OR user_id = :user_id", 
                             following_ids: @current_user.following_ids, 
                             user_id: @current_user.id)
+    render 'posts/display.jbuilder'
+  end
+
+  def someposts
+    postIDs = params[:post_ids]
+    @posts = params[:post_ids].map { |post_id| Post.find(post_id) }
     render 'posts/display.jbuilder'
   end
 
@@ -36,6 +37,8 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
   end
+
+  private
 
   def set_post
     @post = Post.find(params[:id])

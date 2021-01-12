@@ -14,7 +14,7 @@ Built with Ruby on Rails & MySQL
 - [x] Following/follower relationship
 - [x] Improve the `Explore` endpoint
 - [x] Currently follower/following timestamp is not working correctly; use `active_relationships` and `passive_relationships` attributes instead and make a new endpoint
-- [ ] Post likes
+- [x] Post likes
 - [ ] Tags
 - [ ] Comments
 - [ ] Reblogs
@@ -34,6 +34,7 @@ Built with Ruby on Rails & MySQL
 | /feed/                    | GET    | Displays feed                         |
 | /explore/                 | GET    | Displays all posts                    |
 | /usernames/{username}     | GET    | Returns info                          |
+| /someposts/               | POST   | Returns posts from { [post_ids] }     |
 |                           |        |                                       |
 | /users/                   | GET    | Displays all users                    |
 | /users/                   | POST   | Creates user { username, password }   |
@@ -48,6 +49,8 @@ Built with Ruby on Rails & MySQL
 | /posts/                   | POST   | Creates post { title, content }       |
 | /posts/{post_id}          | PUT    | Updates post info { title, content }  |
 | /posts/{post_id}          | DELETE | Destroys post                         |
+| /posts/{post_id}/like     | GET    | Like post                             |
+| /posts/{post_id}/unlike   | GET    | Unlike post                           |
 
 
 ## Error Codes In Use

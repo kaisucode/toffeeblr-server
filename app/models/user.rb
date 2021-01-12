@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { maximum: 20, minimum: 3 }
   has_secure_password
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship", 
     foreign_key: "follower_id", 
     dependent: :destroy

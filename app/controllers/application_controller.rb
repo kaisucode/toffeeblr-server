@@ -22,4 +22,15 @@ class ApplicationController < ActionController::API
       end
     end
   end
+
+  def soft_authorization_request
+    header = request.headers['Authorization']
+    header = header.split(' ').last if header
+    begin
+      @decoded = JsonWebToken.decode(header)
+      @current_user = User.find(@decoded[:user_id])
+    rescue 
+      @current_user = nil
+    end
+  end
 end
