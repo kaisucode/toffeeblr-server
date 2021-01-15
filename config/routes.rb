@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users
   resources :posts do
     resources :likes
+    resources :comments
   end
   resources :usernames
   resources :relationships

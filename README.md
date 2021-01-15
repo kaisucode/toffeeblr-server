@@ -51,6 +51,7 @@ Built with Ruby on Rails & MySQL
 | /posts/{post_id}          | DELETE | Destroys post                         |
 | /posts/{post_id}/like     | GET    | Like post                             |
 | /posts/{post_id}/unlike   | GET    | Unlike post                           |
+| /posts/{post_id}/comments | POST   | Creates a comment { content }         |
 
 
 ## Error Codes In Use
