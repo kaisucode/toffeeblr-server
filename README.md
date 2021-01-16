@@ -18,7 +18,7 @@ Built with Ruby on Rails & MySQL
 - [ ] Tags
 - [x] Comments
 - [ ] Reblogs
--
+
 - [ ] Add user bio and avatar
 - [ ] Image posts
 - [ ] Pagination
