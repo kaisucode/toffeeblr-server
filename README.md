@@ -16,7 +16,7 @@ Built with Ruby on Rails & MySQL
 - [x] Currently follower/following timestamp is not working correctly; use `active_relationships` and `passive_relationships` attributes instead and make a new endpoint
 - [x] Post likes
 - [ ] Tags
-- [ ] Comments
+- [x] Comments
 - [ ] Reblogs
 -
 - [ ] Add user bio and avatar
@@ -46,7 +46,7 @@ Built with Ruby on Rails & MySQL
 | /relationships/           | POST   | Follows user { username }             |
 | /relationships/{username} | DELETE | Unfollows user                        |
 |                           |        |                                       |
-| /posts/                   | POST   | Creates post { title, content }       |
+| /posts/                   | POST   | Creates post { title, content, parent_id } |
 | /posts/{post_id}          | PUT    | Updates post info { title, content }  |
 | /posts/{post_id}          | DELETE | Destroys post                         |
 | /posts/{post_id}/like     | GET    | Like post                             |

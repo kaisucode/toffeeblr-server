@@ -13,7 +13,8 @@ class User < ApplicationRecord
     foreign_key: "followed_id", 
     dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
-  has_many :followers, through: :passive_relationships
+  has_many :followers, through: :passive_relationships, source: :follower
+  # the follower source can be omitted, since rails will automatically singularize followers -> follower
 
   def follow(other_user)
     following << other_user

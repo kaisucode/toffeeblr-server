@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_15_202618) do
+ActiveRecord::Schema.define(version: 2021_01_16_173222) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 2021_01_15_202618) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "reblogs", force: :cascade do |t|
+    t.integer "parent_id"
+    t.integer "child_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["child_id"], name: "index_reblogs_on_child_id"
+    t.index ["parent_id", "child_id"], name: "index_reblogs_on_parent_id_and_child_id"
+    t.index ["parent_id"], name: "index_reblogs_on_parent_id"
   end
 
   create_table "relationships", force: :cascade do |t|
