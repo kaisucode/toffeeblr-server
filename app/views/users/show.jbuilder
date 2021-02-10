@@ -6,10 +6,8 @@ json.user do
   json.following @user.following.map { |user| user.username }
   json.likes @user.likes.order(created_at: :desc).map{ |like| like.post_id }
 
-  json.posts @user.posts do |post|
-    json.merge! post.attributes
-    json.username post.username
-    json.likes post.likes
+  json.posts do
+    json.partial! '/posts', posts: @user.posts, current_user: @current_user
   end
 end
 

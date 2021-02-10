@@ -17,7 +17,7 @@ Built with Ruby on Rails & MySQL
 - [x] Post likes
 - [ ] Tags
 - [x] Comments
-- [ ] Reblogs
+- [x] Reblogs
 
 - [ ] Add user bio and avatar
 - [ ] Image posts
